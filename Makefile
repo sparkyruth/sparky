@@ -4,9 +4,9 @@ all: dff
 
 dff:prerequisites
 	@echo 'building file $(@F)'
-	$(CXX) -I/usr/local/systemc-2.3.2/include -O0 -g3 -Wall -c main.cpp monitor.cc driver.cc dff.cc
+	$(CXX) -I/usr/local/systemc-2.3.2/include -O0 -g3 -Wall -c main.cpp monitor.cc driver.cc nand.cc invertergate.cc 
 
-	$(CXX) -L/usr/local/systemc-2.3.2/lib-linux64 -o "dff" main.o dff.o monitor.o driver.o -lsystemc
+	$(CXX) -L/usr/local/systemc-2.3.2/lib-linux64 -o "dff" main.o dff.o monitor.o invertergate.o nand.o driver.o -lsystemc
 	./dff
 	gtkwave -c 4 vcd_trace.vcd
 
